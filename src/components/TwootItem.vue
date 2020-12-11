@@ -12,6 +12,7 @@
 </template>
 
 <script>
+//import { reactive } from 'vue';
 export default {
     name: "TwootItem",
     props: {
@@ -24,11 +25,24 @@ export default {
             required: true
         }
     },
-    methods: {
-        favouriteTwoot(id) {
-            this.$emit('favourite', id);
+    setup(props, ctx) {
+        //const state = reactive({})
+
+        function favouriteTwoot(id) {
+            ctx.emit('favourite', id);
+        }
+
+        return {
+            favouriteTwoot
         }
     }
+
+    //old method
+    // methods: {
+    //     favouriteTwoot(id) {
+    //         this.$emit('favourite', id);
+    //     }
+    // }
 }
 </script>
 
